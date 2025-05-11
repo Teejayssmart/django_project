@@ -1,9 +1,13 @@
 {% extends 'layout.html' %}
 
 {% block title %}
+<<<<<<< HEAD
  
     Posts
 
+=======
+    Posts
+>>>>>>> dfe5f18 (creating admin panel)
 {% endblock %}
 
 {% block content %}
@@ -11,6 +15,7 @@
     <h1>Posts</h1>
 
     {% for post in posts %}
+<<<<<<< HEAD
                 <article class ="post">
                     <h2>{{post.title}}</h2>
                     <p>{{post.date}}</p>
@@ -22,3 +27,17 @@
 
 {% endblock %}
 
+=======
+        <article class="post">
+            <h2>
+                <a href="{%  url 'posts:page' slug=post.slug %}">
+                    {{ post.title }}
+                </a>
+            </h2>
+            <p>{{ post.date }}</p>
+            <p>{{ post.body }}</p>
+        </article>
+    {% endfor %}
+</section>
+{% endblock %}
+>>>>>>> dfe5f18 (creating admin panel)
