@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
@@ -12,13 +13,30 @@
   </title>
   <script src= "{% static 'js/main.js'%}" defer></script>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            Django App
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/main.js' %}" defer></script>
+>>>>>>> 5343fe1 (Creating App Challenge)
 </head>
 <body>
-  <nav>
-        <a href="/">🏠</a> |
-        <a href="/about">😊</a> |
-        <a href="/posts">📰</a> |
+    <nav>
+        <a href="/">
+            <span role="img" aria-label="Home">🏠</span>
+        </a> | 
+        <a href="/about">
+            <span role="img" aria-label="About">😀</span>
+        </a> | 
+        <a href="{% url 'posts:list' %}">
+            <span role="img" aria-label="Posts">📰</span>
 
+<<<<<<< HEAD
   </nav>
   <main>
     {%block content %}
@@ -46,12 +64,17 @@
         <a href="{% url 'posts:list' %}">
             <span role="img" aria-label="Posts">📰</span>
 
+=======
+>>>>>>> 5343fe1 (Creating App Challenge)
             </a>
     </nav>
     <main>
         {% block content %}
         {% endblock %}
     </main>
+<<<<<<< HEAD
 >>>>>>> dfe5f18 (creating admin panel)
+=======
+>>>>>>> 5343fe1 (Creating App Challenge)
 </body>
 </html>
