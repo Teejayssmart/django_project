@@ -1,34 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
+from django.contrib.auth.decorators import login_required
+from . import forms
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 5343fe1 (Creating App Challenge)
-# Create your views here.
-
-
+# View to display a list of all posts
 def posts_list(request):
-<<<<<<< HEAD
-  posts = Post.objects.all().order_by('-date')
-  return render(request, 'posts/posts_list.html', {'posts' : posts})
-=======
-# Create your views here.
-
-
-def posts_list(request):
-=======
->>>>>>> 5343fe1 (Creating App Challenge)
     posts = Post.objects.all().order_by('-date')
     return render(request, 'posts/posts_list.html', {'posts': posts})
 
-
+# View to display a single post by its slug
 def post_page(request, slug):
     post = Post.objects.get(slug=slug)
-<<<<<<< HEAD
     return render(request, 'posts/post_page.html', {'post': post})
->>>>>>> dfe5f18 (creating admin panel)
-=======
-    return render(request, 'posts/post_page.html', {'post': post})
->>>>>>> 5343fe1 (Creating App Challenge)
+
+
+@login_required(login_url="/users/login/")
+def post_new(request):
+    if request.method == 'POST':
+        form = forms.CreatePost(request.POST, request.FILES)
+        if form.is_valid():
+            newpost = form.save(commit=False)
+            newpost.author = request.user
+            newpost.save()
+            return redirect('posts:list')
+
+    else:
+        form = forms.CreatePost()
+    return render(request,'posts/post_new.html', {'form' : form})
